@@ -16,6 +16,13 @@ public class Chapter {
 
     private String chapterName;
 
+    public Chapter() {
+    }
+
+    public Chapter(String chapterName) {
+        this.chapterName = chapterName;
+    }
+
     public Integer getChapterId() {
         return chapterId;
     }
