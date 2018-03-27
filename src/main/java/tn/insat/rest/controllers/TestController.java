@@ -1,10 +1,10 @@
 package tn.insat.rest.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import tn.insat.rest.entities.Chapter;
 import tn.insat.rest.entities.Test;
 import tn.insat.rest.services.TestService;
 
@@ -27,5 +27,15 @@ public class TestController {
     @ResponseBody()
     public List<Test> getTests(){
         return testService.getTests();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/test/{testId}")
+    public ResponseEntity<Test> findByTestId(@PathVariable("testId") Integer testId){
+        Test resultat = testService.findByTestId(testId);
+        if(resultat != null){
+            return new ResponseEntity<Test>(resultat, HttpStatus.OK);
+        }else {
+            return new ResponseEntity<Test>(HttpStatus.NOT_FOUND);
+        }
     }
 }

@@ -10,4 +10,5 @@ import java.util.List;
 public interface TestService {
 
     public List<Test> getTests();
+    public Test findByTestId(Integer testId);
 }

@@ -1,5 +1,7 @@
 package tn.insat.rest.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 /**
@@ -16,6 +18,11 @@ public class Choice  {
     private String choiceStatement;
 
     private boolean correct;
+
+    @ManyToOne
+    @JoinColumn(name = "questionId")
+    @JsonIgnoreProperties("choices")
+    private Question questionId;
 
     public Integer getChoiceId() {
         return choiceId;

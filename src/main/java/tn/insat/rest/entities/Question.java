@@ -16,6 +16,7 @@ public class Question {
     @GeneratedValue()
     private Integer questionId;
 
+    @Column(length = 100000)
     private String questionStatement;
 
     private String questionType;
@@ -27,7 +28,7 @@ public class Question {
     @JsonIgnoreProperties("questions")
     private Chapter chapter;
 
-    @OneToMany(mappedBy = "choiceId")
+    @OneToMany(mappedBy = "questionId")
     private Set<Choice> choices;
 
     @ManyToMany(fetch=FetchType.LAZY)

@@ -59,15 +59,15 @@ public class ChapterControllerTest {
         verifyNoMoreInteractions(chapterService);
     }
 
-//    @Test
-//    public void findByChapterId() throws Exception{
-//        Chapter chapter = new Chapter("Generics");
-//        when(chapterService.findByChapterId(1)).thenReturn(chapter);
-//        mockMvc.perform(get("/chapters/{chapterId}", 1))
-//                .andExpect(status().isOk())
-//                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-//                .andExpect(jsonPath("$.chapterName", is("Generics")));
-//        verify(chapterService, times(1)).findByChapterId(1);
-//        verifyNoMoreInteractions(chapterService);
-//    }
+    @Test
+    public void findByChapterId() throws Exception{
+        Chapter chapter = new Chapter("Generics");
+        when(chapterService.findByChapterId(1)).thenReturn(chapter);
+        mockMvc.perform(get("/chapters/{chapterId}", 1))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.chapterName", is("Generics")));
+        verify(chapterService, times(1)).findByChapterId(1);
+        verifyNoMoreInteractions(chapterService);
+    }
 }

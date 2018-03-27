@@ -31,13 +31,7 @@ public class ChapterController {
     @SuppressWarnings({ "rawtypes", "unchecked" })
     @RequestMapping(value = "/chapters/{chapterId}")
     public ResponseEntity<Chapter> findByChapterId(@PathVariable("chapterId") Integer chapterId){
-        Chapter resultat = chapterService.
-                getChapters().
-                stream().
-                filter(x -> x.getChapterId().equals(chapterId)).
-                findFirst().
-                orElse(null);
-
+        Chapter resultat = chapterService.findByChapterId(chapterId);
         if (resultat != null) {
             return new ResponseEntity<Chapter>(resultat, HttpStatus.OK);
         } else

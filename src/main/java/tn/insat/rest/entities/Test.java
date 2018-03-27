@@ -27,6 +27,14 @@ public class Test {
     @JsonIgnoreProperties("tests")
     private Set<Question> questions;
 
+    public Test() {
+    }
+
+    public Test(String testName, String testType) {
+        this.testName = testName;
+        this.testType = testType;
+    }
+
     public Integer getTestId() {
         return testId;
     }

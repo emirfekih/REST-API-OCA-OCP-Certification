@@ -24,4 +24,9 @@ public class TestServiceImpl implements TestService {
     public List<Test> getTests() {
         return testRepository.findAll();
     }
+
+    @Override
+    public Test findByTestId(Integer testId) {
+        return testRepository.findByTestId(testId);
+    }
 }

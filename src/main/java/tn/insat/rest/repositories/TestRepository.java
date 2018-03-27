@@ -9,4 +9,5 @@ import tn.insat.rest.entities.Test;
  */
 @Repository
 public interface TestRepository extends JpaRepository<Test, Integer>{
+    public Test findByTestId(Integer testId);
 }
