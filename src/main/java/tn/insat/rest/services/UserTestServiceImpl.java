@@ -25,4 +25,9 @@ public class UserTestServiceImpl implements UserTestService {
     public List<UserTest> getUserTests() {
         return userTestRepository.findAll();
     }
+
+    @Override
+    public UserTest addUserTest(UserTest userTest) {
+        return userTestRepository.save(userTest);
+    }
 }

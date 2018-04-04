@@ -29,6 +29,8 @@ public class JwtUserDetailsServiceImpl implements UserDetailsService {
         }
     }
 
-
+    public User ajouterClient(User user) {
+        return userRepository.save(user);
+    }
 
 }

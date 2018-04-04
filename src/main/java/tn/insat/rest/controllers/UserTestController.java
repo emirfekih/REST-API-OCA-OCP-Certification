@@ -1,9 +1,12 @@
 package tn.insat.rest.controllers;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
+import tn.insat.model.security.User;
 import tn.insat.rest.entities.UserTest;
 import tn.insat.rest.services.UserTestService;
 
@@ -17,6 +20,7 @@ public class UserTestController{
 
     private UserTestService userTestService;
 
+    @Autowired
     public void setUserTestService(UserTestService userTestService) {
         this.userTestService = userTestService;
     }
@@ -25,5 +29,11 @@ public class UserTestController{
     @ResponseBody()
     public List<UserTest> getUserTests(){
         return userTestService.getUserTests();
+    }
+
+    @RequestMapping(value="/addUserTest",method = RequestMethod.POST)
+    public ResponseEntity<UserTest> addUserTest(@RequestBody UserTest userTest){
+        userTestService.addUserTest(userTest);
+        return new ResponseEntity<UserTest>(userTest, HttpStatus.CREATED);
     }
 }

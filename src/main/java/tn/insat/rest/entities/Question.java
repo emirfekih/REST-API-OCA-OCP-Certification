@@ -17,9 +17,16 @@ public class Question {
     private Integer questionId;
 
     @Column(length = 100000)
+    private String questionHeader;
+
+    @Column(length = 100000)
+    private String questionCode;
+
+    @Column(length = 100000)
     private String questionStatement;
 
-    private String questionType;
+    // 1: Single Select, 2: Multiple Select
+    private int questionType;
 
     private String questionExplanation;
 
@@ -50,15 +57,31 @@ public class Question {
         return questionStatement;
     }
 
+    public String getQuestionHeader() {
+        return questionHeader;
+    }
+
+    public void setQuestionHeader(String questionHeader) {
+        this.questionHeader = questionHeader;
+    }
+
+    public String getQuestionCode() {
+        return questionCode;
+    }
+
+    public void setQuestionCode(String questionCode) {
+        this.questionCode = questionCode;
+    }
+
     public void setQuestionStatement(String questionStatement) {
         this.questionStatement = questionStatement;
     }
 
-    public String getQuestionType() {
+    public int getQuestionType() {
         return questionType;
     }
 
-    public void setQuestionType(String questionType) {
+    public void setQuestionType(int questionType) {
         this.questionType = questionType;
     }
 

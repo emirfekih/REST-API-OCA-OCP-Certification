@@ -6,9 +6,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.insat.rest.entities.Chapter;
 import tn.insat.rest.entities.Test;
+import tn.insat.rest.entities.TestChapterDTO;
+import tn.insat.rest.entities.TestDTO;
 import tn.insat.rest.services.TestService;
 
-import java.util.List;
+import java.util.*;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.mapping;
 
 /**
  * Created by zied on 19/02/2018.
@@ -27,6 +33,18 @@ public class TestController {
     @ResponseBody()
     public List<Test> getTests(){
         return testService.getTests();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/tests/getAllDTO")
+    @ResponseBody()
+    public List<TestDTO> getTestsDTO(){
+        return testService.findAllDTO();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/tests/getAllChaptersDTO")
+    @ResponseBody()
+    public Set<TestChapterDTO> getTestChaptersDTO() {
+         return testService.findTestChaptersDTO();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/test/{testId}")

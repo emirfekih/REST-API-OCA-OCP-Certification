@@ -1,5 +1,6 @@
 package tn.insat.model.security;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import tn.insat.rest.entities.UserTest;
 
 import java.util.Date;
@@ -51,6 +52,7 @@ public class User {
 
     @Column(name = "LASTPASSWORDRESETDATE")
     @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
     @NotNull
     private Date lastPasswordResetDate;
 

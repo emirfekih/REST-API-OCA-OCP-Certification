@@ -17,7 +17,7 @@ public class UserTest {
 
     private Date testDate;
 
-    private Date testTimeTaken;
+    private int testTimeTaken;
 
     private Integer testScore;
 
@@ -28,7 +28,7 @@ public class UserTest {
     public UserTest() {
     }
 
-    public UserTest(UserTestPK userTestPK, Date testDate, Date testTimeTaken, Integer testScore, Test test) {
+    public UserTest(UserTestPK userTestPK, Date testDate, int testTimeTaken, Integer testScore, Test test) {
         this.userTestPK = userTestPK;
         this.testDate = testDate;
         this.testTimeTaken = testTimeTaken;
@@ -66,11 +66,11 @@ public class UserTest {
         this.testDate = testDate;
     }
 
-    public Date getTestTimeTaken() {
+    public int getTestTimeTaken() {
         return testTimeTaken;
     }
 
-    public void setTestTimeTaken(Date testTimeTaken) {
+    public void setTestTimeTaken(int testTimeTaken) {
         this.testTimeTaken = testTimeTaken;
     }
 
