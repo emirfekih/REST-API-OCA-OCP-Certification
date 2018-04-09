@@ -35,16 +35,18 @@ public class TestController {
         return testService.getTests();
     }
 
+//    returns the tests (name and type only)
     @RequestMapping(method = RequestMethod.GET, value = "/tests/getAllDTO")
     @ResponseBody()
     public List<TestDTO> getTestsDTO(){
         return testService.findAllDTO();
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/tests/getAllChaptersDTO")
+//    Gets the the name and id of the chapters within a test
+    @RequestMapping(method = RequestMethod.GET, value = "/tests/getAllChaptersDTO/{testId}")
     @ResponseBody()
-    public Set<TestChapterDTO> getTestChaptersDTO() {
-         return testService.findTestChaptersDTO();
+    public Set<TestChapterDTO> getTestChaptersDTO(@PathVariable("testId") Integer testId) {
+         return testService.findTestChaptersDTOById(testId);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/test/{testId}")
@@ -55,5 +57,11 @@ public class TestController {
         }else {
             return new ResponseEntity<Test>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @RequestMapping(value="/test/{testId}/{testType}",method = RequestMethod.GET)
+    @ResponseBody()
+    public List<TestDTO> getTestDTOByIdandType(@PathVariable("testId") Integer testId, @PathVariable("testType") String testType) {
+        return testService.findByTestIdAndTestType(testId,testType);
     }
 }

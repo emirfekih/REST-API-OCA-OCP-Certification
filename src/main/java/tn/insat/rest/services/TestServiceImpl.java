@@ -39,7 +39,12 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public Set<TestChapterDTO> findTestChaptersDTO() {
-        return testRepository.findTestChaptersDTO();
+    public Set<TestChapterDTO> findTestChaptersDTOById(Integer testId) {
+        return testRepository.findTestChaptersDTOById(testId);
+    }
+
+    @Override
+    public List<TestDTO> findByTestIdAndTestType(Integer testId, String testType) {
+        return testRepository.findByTestIdAndTestType(testId,testType);
     }
 }

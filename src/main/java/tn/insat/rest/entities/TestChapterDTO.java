@@ -1,9 +1,13 @@
 package tn.insat.rest.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Created by zied on 03/04/2018.
  */
 public class TestChapterDTO {
+
+    @JsonIgnore
     private Integer testId;
     private Integer chapterId;
     private String chapterName;

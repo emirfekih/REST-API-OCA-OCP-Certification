@@ -15,5 +15,6 @@ public interface TestService {
     public List<Test> getTests();
     public Test findByTestId(Integer testId);
     public List<TestDTO> findAllDTO();
-    public Set<TestChapterDTO> findTestChaptersDTO();
+    public Set<TestChapterDTO> findTestChaptersDTOById(Integer testId);
+    public List<TestDTO> findByTestIdAndTestType(Integer testId, String testType);
 }
