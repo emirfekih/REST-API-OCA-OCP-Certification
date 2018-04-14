@@ -20,9 +20,10 @@ spring:
       ddl-auto: create
 
   datasource:
+  na
     url: ${JDBC_DATABASE_URL}
     username: ${JDBC_DATABASE_USERNAME}
-    password: ${JDBC_DATABASE_PASSWORD}
+    password: pass
     driver-class-name: com.mysql.jdbc.Driver
 
 
