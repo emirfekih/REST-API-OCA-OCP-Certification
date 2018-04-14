@@ -17,15 +17,13 @@ spring:
   jpa:
     hibernate:
       # possible values: validate | update | create | create-drop
-      ddl-auto: create
+      ddl-auto: update
 
   datasource:
-  na
     url: ${JDBC_DATABASE_URL}
     username: ${JDBC_DATABASE_USERNAME}
     password: pass
     driver-class-name: com.mysql.jdbc.Driver
-
 
 
 jwt:
