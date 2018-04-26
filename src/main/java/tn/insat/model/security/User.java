@@ -19,7 +19,7 @@ public class User {
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "user_seq")
     @SequenceGenerator(name = "user_seq", sequenceName = "user_seq", allocationSize = 1)
-    private Long id;
+    private Integer id;
 
     @Column(name = "USERNAME", length = 50, unique = true)
     @NotNull
@@ -74,11 +74,11 @@ public class User {
         this.user_tests = user_tests;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

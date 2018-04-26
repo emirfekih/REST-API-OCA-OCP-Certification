@@ -14,7 +14,7 @@ import tn.insat.rest.entities.UserTest;
  */
 public class JwtUser implements UserDetails {
 
-    private final Long id;
+    private final Integer id;
     private final String username;
     private final String firstname;
     private final String lastname;
@@ -26,7 +26,7 @@ public class JwtUser implements UserDetails {
     private final Collection<UserTest> user_tests;
 
     public JwtUser(
-          Long id,
+          Integer id,
           String username,
           String firstname,
           String lastname,
@@ -49,7 +49,7 @@ public class JwtUser implements UserDetails {
     }
 
     @JsonIgnore
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
