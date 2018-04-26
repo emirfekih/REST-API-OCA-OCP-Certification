@@ -24,5 +24,5 @@ public interface TestRepository extends JpaRepository<Test, Integer>{
     @Query("SELECT new tn.insat.rest.entities.TestChapterDTO(t.testId,tqc.chapterId, tqc.chapterName) FROM Test t inner join t.questions tq inner join tq.chapter tqc where t.testId = :testId")
     public Set<TestChapterDTO> findTestChaptersDTOById(@Param("testId") Integer testId);
 
-    public List<TestDTO> findByTestIdAndTestType(Integer testId, String testtype);
+    public List<TestDTO> findByTestType(String testType);
 }

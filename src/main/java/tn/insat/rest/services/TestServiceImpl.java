@@ -44,7 +44,7 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public List<TestDTO> findByTestIdAndTestType(Integer testId, String testType) {
-        return testRepository.findByTestIdAndTestType(testId,testType);
+    public List<TestDTO> findByTestType(String testType) {
+        return testRepository.findByTestType(testType);
     }
 }

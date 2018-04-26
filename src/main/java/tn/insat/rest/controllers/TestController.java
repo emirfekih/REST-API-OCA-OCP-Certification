@@ -59,9 +59,9 @@ public class TestController {
         }
     }
 
-    @RequestMapping(value="/test/{testId}/{testType}",method = RequestMethod.GET)
+    @RequestMapping(value="/test",method = RequestMethod.GET)
     @ResponseBody()
-    public List<TestDTO> getTestDTOByIdandType(@PathVariable("testId") Integer testId, @PathVariable("testType") String testType) {
-        return testService.findByTestIdAndTestType(testId,testType);
+    public List<TestDTO> getTestDTOByType(@RequestParam("testType") String testType) {
+        return testService.findByTestType(testType);
     }
 }
