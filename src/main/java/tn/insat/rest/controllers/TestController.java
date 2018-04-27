@@ -4,13 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tn.insat.rest.entities.Chapter;
-import tn.insat.rest.entities.Test;
-import tn.insat.rest.entities.TestChapterDTO;
-import tn.insat.rest.entities.TestDTO;
+import tn.insat.rest.entities.*;
 import tn.insat.rest.services.TestService;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.groupingBy;
@@ -35,6 +33,7 @@ public class TestController {
         return testService.getTests();
     }
 
+
 //    returns the tests (name and type only)
     @RequestMapping(method = RequestMethod.GET, value = "/tests/getAllDTO")
     @ResponseBody()
@@ -49,7 +48,8 @@ public class TestController {
          return testService.findTestChaptersDTOById(testId);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/test/{testId}")
+//    Shuffled test
+    @RequestMapping(method = RequestMethod.GET, value = "/shuffledTest/{testId}")
     public ResponseEntity<Test> findByTestId(@PathVariable("testId") Integer testId){
         Test resultat = testService.findByTestId(testId);
         if(resultat != null){
@@ -57,6 +57,38 @@ public class TestController {
         }else {
             return new ResponseEntity<Test>(HttpStatus.NOT_FOUND);
         }
+    }
+
+//    Ordered Test
+    @RequestMapping(method = RequestMethod.GET, value = "/test/{testId}")
+    public Test findByTestIdOrderedByChoiceID(@PathVariable("testId") Integer testId){
+        Test result = testService.findByTestId(testId);
+        // order Questions
+        Set<Question> questions = result.getQuestions();
+        Set<Question> sortedQuestions = new TreeSet<Question>(new Comparator<Question>() {
+            @Override
+            public int compare(Question o1, Question o2) {
+                return o1.getQuestionId().compareTo(o2.getQuestionId());
+            }
+        });
+        sortedQuestions.addAll(questions);
+        result.setQuestions(sortedQuestions);
+
+        //order choices
+        for (Question s : sortedQuestions) {
+            Set<Choice> choices = s.getChoices();
+            Set<Choice> sortedChoices = new TreeSet<Choice>(new Comparator<Choice>() {
+                @Override
+                public int compare(Choice c1, Choice c2) {
+                    return c1.getChoiceId().compareTo(c2.getChoiceId());
+                }
+            });
+            sortedChoices.addAll(choices);
+            s.setChoices(sortedChoices);
+        }
+
+        return result;
+
     }
 
     @RequestMapping(value="/test",method = RequestMethod.GET)

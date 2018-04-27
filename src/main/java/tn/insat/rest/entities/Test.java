@@ -20,6 +20,8 @@ public class Test {
 
     private String testType;
 
+    private int requiredScore;
+
     @ManyToMany(fetch=FetchType.LAZY)
     @JoinTable(name="test_question", catalog="finalDB", joinColumns = {
             @JoinColumn(name="testId", nullable=true, updatable=true) }, inverseJoinColumns = {
@@ -33,6 +35,20 @@ public class Test {
     public Test(String testName, String testType) {
         this.testName = testName;
         this.testType = testType;
+    }
+
+    public Test(String testName, String testType, Set<Question> questions) {
+        this.testName = testName;
+        this.testType = testType;
+        this.questions = questions;
+    }
+
+    public int getRequiredScore() {
+        return requiredScore;
+    }
+
+    public void setRequiredScore(int requiredScore) {
+        this.requiredScore = requiredScore;
     }
 
     public Integer getTestId() {

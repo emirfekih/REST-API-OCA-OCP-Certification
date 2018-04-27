@@ -17,9 +17,13 @@ public class UserTest {
 
     private Date testDate;
 
-    private int testTimeTaken;
+    private int elapsedTime;
+
+    private int timeLimit;
 
     private Integer testScore;
+
+    private int nbrCorrectAnwsers;
 
     public UserTest(Date testDate) {
         this.testDate = testDate;
@@ -28,10 +32,10 @@ public class UserTest {
     public UserTest() {
     }
 
-    public UserTest(UserTestPK userTestPK, Date testDate, int testTimeTaken, Integer testScore, Test test) {
+    public UserTest(UserTestPK userTestPK, Date testDate, int elapsedTime, Integer testScore, Test test) {
         this.userTestPK = userTestPK;
         this.testDate = testDate;
-        this.testTimeTaken = testTimeTaken;
+        this.elapsedTime = elapsedTime;
         this.testScore = testScore;
         this.test = test;
     }
@@ -66,12 +70,20 @@ public class UserTest {
         this.testDate = testDate;
     }
 
-    public int getTestTimeTaken() {
-        return testTimeTaken;
+    public int getElapsedTime() {
+        return elapsedTime;
     }
 
-    public void setTestTimeTaken(int testTimeTaken) {
-        this.testTimeTaken = testTimeTaken;
+    public int getTimeLimit() {
+        return timeLimit;
+    }
+
+    public void setTimeLimit(int timeLimit) {
+        this.timeLimit = timeLimit;
+    }
+
+    public void setElapsedTime(int elapsedTime) {
+        this.elapsedTime = elapsedTime;
     }
 
     public Integer getTestScore() {
@@ -82,4 +94,11 @@ public class UserTest {
         this.testScore = testScore;
     }
 
+    public int getNbrCorrectAnwsers() {
+        return nbrCorrectAnwsers;
+    }
+
+    public void setNbrCorrectAnwsers(int nbrCorrectAnwsers) {
+        this.nbrCorrectAnwsers = nbrCorrectAnwsers;
+    }
 }
