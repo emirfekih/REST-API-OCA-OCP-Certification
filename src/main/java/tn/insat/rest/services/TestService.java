@@ -17,4 +17,6 @@ public interface TestService {
     public List<TestDTO> findAllDTO();
     public Set<TestChapterDTO> findTestChaptersDTOById(Integer testId);
     public List<TestDTO> findByTestType(String testType);
+    public Test getOrderedTest(Integer testId);
+    public Test getTestById(Integer testId, boolean shuffleOptions, boolean questionRange, Integer firstQuestion, Integer lastQuestion, boolean takeOnlyChapters, List<Integer> chapters);
 }
