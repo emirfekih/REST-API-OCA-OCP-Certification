@@ -9,5 +9,5 @@ import tn.insat.rest.entities.UserTest;
  * Created by zied on 20/02/2018.
  */
 @Repository
-public interface UserTestRepository extends JpaRepository<UserTest, UserTestPK>{
+public interface  UserTestRepository extends JpaRepository<UserTest, UserTestPK>{
 }

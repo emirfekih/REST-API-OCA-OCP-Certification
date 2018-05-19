@@ -61,17 +61,17 @@ public class TestControllerTest {
 
     }
 
-    @org.junit.Test
-    public void findByTestId() throws Exception {
-        tn.insat.rest.entities.Test test = new tn.insat.rest.entities.Test("test","test");
-        when(testService.findByTestId(1)).thenReturn(test);
-        mockMvc.perform(get("/test/{testId}", 1))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-                .andExpect(jsonPath("$.testName", is("test")))
-                .andExpect(jsonPath("$.testType", is("test")));
-        verify(testService, times(1)).findByTestId(1);
-        verifyNoMoreInteractions(testService);
-    }
+//    @org.junit.Test
+//    public void findByTestId() throws Exception {
+//        tn.insat.rest.entities.Test test = new tn.insat.rest.entities.Test("test","test");
+//        when(testService.findByTestId(1)).thenReturn(test);
+//        mockMvc.perform(get("/test/{testId}", 1))
+//                .andExpect(status().isOk())
+//                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+//                .andExpect(jsonPath("$.testName", is("test")))
+//                .andExpect(jsonPath("$.testType", is("test")));
+//        verify(testService, times(1)).findByTestId(1);
+//        verifyNoMoreInteractions(testService);
+//    }
 
 }
