@@ -1,12 +1,12 @@
 # config context path to "/" by setting an empty string
-server:
-  contextPath:
-  port: 8443
-  ssl:
-    key-store: classpath:keystore.p12
-    key-store-password: ziedyazidi
-    key-store-type: PKCS12
-    key-alias: tomacat
+#server:
+#  contextPath:
+#  port: 8443
+#  ssl:
+#    key-store: classpath:keystore.p12
+#    key-store-password: ziedyazidi
+#    key-store-type: PKCS12
+#    key-alias: tomacat
 
 # JACKSON
 spring:

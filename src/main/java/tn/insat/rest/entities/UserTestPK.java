@@ -2,7 +2,10 @@ package tn.insat.rest.entities;
 
 import javax.persistence.Basic;
 import javax.persistence.Embeddable;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 /**
  * Created by zied on 20/02/2018.
@@ -15,6 +18,18 @@ public class UserTestPK  implements Serializable {
 
     @Basic(optional =false)
     private Integer user_id;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    public Timestamp getTestDate() {
+        return testDate;
+    }
+
+    public void setTestDate(Timestamp testDate) {
+        this.testDate = testDate;
+    }
+
+    @Basic(optional =false)
+    private Timestamp testDate;
 
 
     public Integer getTestId() {

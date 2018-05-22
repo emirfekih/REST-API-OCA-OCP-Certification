@@ -3,7 +3,7 @@ package tn.insat.rest.entities;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.sql.Date;
+
 
 /**
  * Created by zied on 20/02/2018.
@@ -15,7 +15,7 @@ public class UserTest {
     @EmbeddedId
     private UserTestPK userTestPK;
 
-    private Date testDate;
+
 
     private int elapsedTime;
 
@@ -25,16 +25,14 @@ public class UserTest {
 
     private int nbrCorrectAnwsers;
 
-    public UserTest(Date testDate) {
-        this.testDate = testDate;
-    }
+
+
 
     public UserTest() {
     }
 
-    public UserTest(UserTestPK userTestPK, Date testDate, int elapsedTime, Integer testScore, Test test) {
+    public UserTest(UserTestPK userTestPK, int elapsedTime, Integer testScore, Test test) {
         this.userTestPK = userTestPK;
-        this.testDate = testDate;
         this.elapsedTime = elapsedTime;
         this.testScore = testScore;
         this.test = test;
@@ -62,13 +60,7 @@ public class UserTest {
         this.test = test;
     }
 
-    public Date getTestDate() {
-        return testDate;
-    }
 
-    public void setTestDate(Date testDate) {
-        this.testDate = testDate;
-    }
 
     public int getElapsedTime() {
         return elapsedTime;

@@ -10,6 +10,9 @@ import tn.insat.model.security.User;
 import tn.insat.rest.entities.UserTest;
 import tn.insat.rest.services.UserTestService;
 
+import java.util.Date;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -33,6 +36,8 @@ public class UserTestController{
 
     @RequestMapping(value="/addUserTest",method = RequestMethod.POST)
     public ResponseEntity<UserTest> addUserTest(@RequestBody UserTest userTest){
+
+        userTest.getUserTestPK().setTestDate(new Timestamp(new Date().getTime()));
         userTestService.addUserTest(userTest);
         return new ResponseEntity<UserTest>(userTest, HttpStatus.CREATED);
     }
