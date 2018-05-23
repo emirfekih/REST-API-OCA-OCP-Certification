@@ -69,4 +69,10 @@ public class TestController {
         return testService.getTestById(testId,shuffleOptions,questionRange,firstQuestion,lastQuestion,takeOnlyChapters,chapters);
     }
 
+    @RequestMapping(value="/freeTest/{testId}",method=RequestMethod.GET)
+    @ResponseBody()
+    public Test getFreeTest(@PathVariable("testId") Integer testId){
+        return (testService.findByTestId(testId));
+    }
+
 }
