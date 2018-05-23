@@ -28,10 +28,10 @@ public class UserTestController{
         this.userTestService = userTestService;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/usertests/getAll")
+  @RequestMapping(method = RequestMethod.GET, value = "/usertests/{userId}")
     @ResponseBody()
-    public List<UserTest> getUserTests(){
-        return userTestService.getUserTests();
+    public List<UserTest> getUserTestsById(@PathVariable("userId") Integer userId){
+        return userTestService.getUserTestsById(userId);
     }
 
     @RequestMapping(value="/addUserTest",method = RequestMethod.POST)

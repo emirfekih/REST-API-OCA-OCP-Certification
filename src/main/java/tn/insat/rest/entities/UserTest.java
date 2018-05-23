@@ -1,5 +1,6 @@
 package tn.insat.rest.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -41,6 +42,7 @@ public class UserTest {
     @ManyToOne
     @JoinColumn(name = "testId",insertable = false, updatable = false)
     @JsonIgnoreProperties("user_tests")
+    @JsonIgnore
     private Test test;
 
 

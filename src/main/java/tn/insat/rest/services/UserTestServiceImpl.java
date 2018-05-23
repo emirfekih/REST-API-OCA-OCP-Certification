@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import tn.insat.rest.entities.UserTest;
 import tn.insat.rest.repositories.UserTestRepository;
 
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -22,9 +23,19 @@ public class UserTestServiceImpl implements UserTestService {
     }
 
     @Override
-    public List<UserTest> getUserTests() {
-        return userTestRepository.findAll();
+    public List<UserTest> getUserTestsById(Integer userId) {
+        List<UserTest> userTests = userTestRepository.findAll();
+        Iterator<UserTest> iterator = userTests.iterator();
+        while (iterator.hasNext() ){
+            UserTest s = iterator.next();
+            Integer id = s.getUserTestPK().getUserId();
+            if (id != userId) {
+                iterator.remove();
+            }
+        }
+        return userTests;
     }
+
 
     @Override
     public UserTest addUserTest(UserTest userTest) {

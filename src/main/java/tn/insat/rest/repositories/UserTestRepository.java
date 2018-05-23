@@ -5,9 +5,12 @@ import org.springframework.stereotype.Repository;
 import tn.insat.rest.entities.UserTestPK;
 import tn.insat.rest.entities.UserTest;
 
+import java.util.List;
+
 /**
  * Created by zied on 20/02/2018.
  */
 @Repository
-public interface  UserTestRepository extends JpaRepository<UserTest, UserTestPK>{
+public interface  UserTestRepository extends JpaRepository<UserTest, UserTestPK> {
+
 }

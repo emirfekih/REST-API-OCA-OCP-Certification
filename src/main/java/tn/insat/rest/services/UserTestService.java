@@ -10,6 +10,6 @@ import java.util.List;
  */
 public interface UserTestService {
 
-    public List<UserTest> getUserTests();
+    public List<UserTest> getUserTestsById(Integer userId);
     public UserTest addUserTest(UserTest userTest);
 }
