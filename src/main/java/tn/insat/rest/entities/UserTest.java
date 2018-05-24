@@ -42,7 +42,6 @@ public class UserTest {
     @ManyToOne
     @JoinColumn(name = "testId",insertable = false, updatable = false)
     @JsonIgnoreProperties("user_tests")
-    @JsonIgnore
     private Test test;
 
 
