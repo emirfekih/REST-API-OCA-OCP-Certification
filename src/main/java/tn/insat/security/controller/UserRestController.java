@@ -1,5 +1,6 @@
 package tn.insat.security.controller;
 
+import io.jsonwebtoken.Jwt;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,9 +15,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import tn.insat.config.WebSecurityConfig;
 import tn.insat.model.security.User;
+import tn.insat.rest.entities.UserTest;
 import tn.insat.security.JwtTokenUtil;
 import tn.insat.security.JwtUser;
 import tn.insat.security.service.JwtUserDetailsServiceImpl;
+
+import java.util.Collection;
+import java.util.List;
 
 @RestController
 public class UserRestController {
@@ -38,6 +43,22 @@ public class UserRestController {
         String username = jwtTokenUtil.getUsernameFromToken(token);
         JwtUser user = (JwtUser) userDetailsService.loadUserByUsername(username);
         return user;
+    }
+
+    @RequestMapping(value="/userId")
+    public Integer getAuthenticatedUserId(HttpServletRequest request){
+        String token = request.getHeader(tokenHeader).substring(7);
+        String username=jwtTokenUtil.getUsernameFromToken(token);
+        JwtUser user = (JwtUser) userDetailsService.loadUserByUsername(username);
+        return(user.getId());
+    }
+
+    @RequestMapping(value="/examHistory")
+    public Collection<UserTest> getAuthenticatedUserTests(HttpServletRequest request){
+        String token = request.getHeader(tokenHeader).substring(7);
+        String username=jwtTokenUtil.getUsernameFromToken(token);
+        JwtUser user = (JwtUser) userDetailsService.loadUserByUsername(username);
+        return(user.getUser_tests());
     }
 
 

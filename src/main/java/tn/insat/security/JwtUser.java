@@ -48,7 +48,7 @@ public class JwtUser implements UserDetails {
         this.user_tests = user_tests;
     }
 
-    @JsonIgnore
+
     public Integer getId() {
         return id;
     }
